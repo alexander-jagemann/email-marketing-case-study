@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>[Sportevents-Unternehmen] – E-Mail Marketing Case Study</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #0a0a0a;
+    --off-white: #f0ede6;
+    --warm-white: #faf8f4;
+    --accent: #e8401c;
+    --accent-dark: #b52e10;
+    --muted: #8a8278;
+    --border: #d4cfc6;
+    --card-bg: #ffffff;
+    --highlight: #fff3c4;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--off-white);
+    color: var(--black);
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    background: var(--black);
+    color: var(--off-white);
+    padding: 80px 60px 70px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 400px; height: 400px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(232,64,28,0.18) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 20px;
+  }
+  .hero h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(52px, 8vw, 96px);
+    line-height: 0.92;
+    letter-spacing: 0.01em;
+    margin-bottom: 28px;
+  }
+  .hero h1 span { color: var(--accent); }
+  .hero-sub {
+    font-size: 18px;
+    font-weight: 300;
+    color: #c8c3bb;
+    max-width: 560px;
+    line-height: 1.5;
+  }
+  .hero-meta {
+    margin-top: 48px;
+    display: flex;
+    gap: 40px;
+    flex-wrap: wrap;
+  }
+  .hero-meta-item { display: flex; flex-direction: column; gap: 4px; }
+  .hero-meta-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .hero-meta-value {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--off-white);
+  }
+
+  /* ── NAV DOTS ── */
+  .toc {
+    background: var(--black);
+    border-top: 1px solid #1e1e1e;
+    padding: 18px 60px;
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+  .toc a {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #666;
+    text-decoration: none;
+    padding: 6px 14px;
+    border: 1px solid #333;
+    border-radius: 2px;
+    transition: all 0.2s;
+  }
+  .toc a:hover { color: var(--off-white); border-color: var(--accent); }
+
+  /* ── LAYOUT ── */
+  .container { max-width: 1100px; margin: 0 auto; padding: 0 60px; }
+  
+  section {
+    padding: 80px 60px;
+    border-bottom: 1px solid var(--border);
+  }
+  section:last-child { border-bottom: none; }
+  section:nth-child(even) { background: var(--warm-white); }
+
+  .section-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 24px;
+    margin-bottom: 48px;
+  }
+  .section-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 72px;
+    line-height: 1;
+    color: var(--border);
+    flex-shrink: 0;
+    min-width: 70px;
+  }
+  .section-titles { padding-top: 8px; }
+  .section-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 6px;
+  }
+  .section-titles h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(32px, 4vw, 48px);
+    letter-spacing: 0.02em;
+    line-height: 1;
+    color: var(--black);
+  }
+
+  /* ── PROBLEM CARDS ── */
+  .problems-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    background: var(--border);
+    border: 1px solid var(--border);
+  }
+  .problem-card {
+    background: var(--card-bg);
+    padding: 32px 28px;
+    position: relative;
+  }
+  .problem-rank {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 56px;
+    color: var(--accent);
+    line-height: 1;
+    margin-bottom: 12px;
+  }
+  .problem-title {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    line-height: 1.3;
+  }
+  .problem-desc {
+    font-size: 14px;
+    color: #555;
+    line-height: 1.6;
+  }
+  .problem-impact {
+    margin-top: 16px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 500;
+  }
+  .problem-impact::before {
+    content: '';
+    display: inline-block;
+    width: 6px; height: 6px;
+    background: var(--accent);
+    border-radius: 50%;
+  }
+
+  /* ── PRIORITY BOX ── */
+  .priority-box {
+    background: var(--black);
+    color: var(--off-white);
+    padding: 40px;
+    margin-top: 32px;
+    position: relative;
+  }
+  .priority-box::before {
+    content: '→ Wo zuerst ansetzen';
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    display: block;
+    margin-bottom: 16px;
+  }
+  .priority-box p {
+    font-size: 16px;
+    line-height: 1.7;
+    color: #ccc;
+    max-width: 780px;
+  }
+  .priority-box strong { color: var(--off-white); }
+
+  /* ── SEGMENT CARDS ── */
+  .segments-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+  .segments-grid .seg-card:first-child {
+    grid-column: 1 / -1;
+  }
+  .seg-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    padding: 28px;
+    position: relative;
+    overflow: hidden;
+  }
+  .seg-card::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 4px; height: 100%;
+    background: var(--accent);
+  }
+  .seg-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 26px;
+    letter-spacing: 0.03em;
+    margin-bottom: 6px;
+  }
+  .seg-desc {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 16px;
+    line-height: 1.5;
+  }
+  .seg-criteria {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    padding: 4px 10px;
+    background: var(--off-white);
+    border: 1px solid var(--border);
+    color: #555;
+    text-transform: uppercase;
+  }
+  .tag.accent { background: #fde8e3; border-color: #f4b5a5; color: var(--accent-dark); }
+  .seg-size {
+    position: absolute;
+    top: 24px; right: 24px;
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  /* ── CAMPAIGN CARDS ── */
+  .campaigns-stack { display: flex; flex-direction: column; gap: 24px; }
+  .campaign-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    overflow: hidden;
+  }
+  .campaign-header {
+    background: var(--black);
+    color: var(--off-white);
+    padding: 24px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  .campaign-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    color: var(--accent);
+    text-transform: uppercase;
+  }
+  .campaign-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px;
+    letter-spacing: 0.04em;
+    flex: 1;
+  }
+  .campaign-badge {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 5px 12px;
+    border: 1px solid var(--accent);
+    color: var(--accent);
+  }
+  .campaign-body {
+    padding: 32px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px 40px;
+  }
+  .campaign-field label {
+    display: block;
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 6px;
+  }
+  .campaign-field p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #333;
+  }
+  .campaign-field.full { grid-column: 1 / -1; }
+  .campaign-reason {
+    background: var(--highlight);
+    border-left: 3px solid #d4a500;
+    padding: 16px 20px;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #5a4a00;
+    grid-column: 1 / -1;
+  }
+  .campaign-reason strong { font-weight: 700; }
+
+  /* ── QUICK WINS TIMELINE ── */
+  .timeline { position: relative; padding-left: 32px; }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    top: 12px; left: 10px;
+    bottom: 0;
+    width: 2px;
+    background: var(--border);
+  }
+  .timeline-week { margin-bottom: 36px; position: relative; }
+  .timeline-week::before {
+    content: '';
+    position: absolute;
+    top: 12px; left: -28px;
+    width: 10px; height: 10px;
+    background: var(--accent);
+    border-radius: 50%;
+    border: 2px solid var(--off-white);
+    box-shadow: 0 0 0 2px var(--accent);
+  }
+  .timeline-week-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 12px;
+  }
+  .timeline-items {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+  .timeline-item {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    padding: 14px 18px;
+    font-size: 14px;
+    line-height: 1.4;
+    color: #333;
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+  }
+  .timeline-item-icon {
+    font-size: 16px;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .timeline-item b { display: block; font-weight: 600; margin-bottom: 2px; font-size: 13px; }
+  .timeline-item span { font-size: 12px; color: #777; }
+
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    margin-top: 40px;
+  }
+  .kpi-card {
+    background: var(--card-bg);
+    padding: 24px 20px;
+    text-align: center;
+  }
+  .kpi-value {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 42px;
+    color: var(--accent);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .kpi-label {
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.3;
+  }
+
+  /* ── FOOTER ── */
+  .footer {
+    background: var(--black);
+    color: #666;
+    padding: 32px 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  .footer span { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.1em; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    .hero, section, .toc, .footer { padding-left: 24px; padding-right: 24px; }
+    .problems-grid, .kpi-grid { grid-template-columns: 1fr; }
+    .segments-grid { grid-template-columns: 1fr; }
+    .segments-grid .seg-card:first-child { grid-column: auto; }
+    .campaign-body { grid-template-columns: 1fr; }
+    .timeline-items { grid-template-columns: 1fr; }
+    .section-num { font-size: 48px; min-width: 48px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- CONTEXT BANNER -->
+<div style="background:#1a3a5c;color:#e0eaf5;padding:12px 60px;font-family:DM Mono,monospace;font-size:11px;letter-spacing:0.1em;display:flex;gap:12px;align-items:center;">
+  <span style="color:#6ab0f5;">ℹ️ PORTFOLIO NOTE</span>
+  <span>Bewerbungs-Case Study · Branche: Sportevent-Veranstalter · Tool: Klaviyo · Zeitaufwand: ~2h · Unternehmen anonymisiert</span>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-tag">Case Study · E-Mail Marketing</div>
+  <h1>Event<span>marketing</span><br>Email Reboot</h1>
+  <p class="hero-sub">Von der Gießkanne zur präzisen Kommunikation – wie wir Klaviyo in einen echten Umsatzhebel verwandeln.</p>
+  <div class="hero-meta">
+    <div class="hero-meta-item">
+      <span class="hero-meta-label">Tool</span>
+      <span class="hero-meta-value">Klaviyo</span>
+    </div>
+    <div class="hero-meta-item">
+      <span class="hero-meta-label">Fokus</span>
+      <span class="hero-meta-value">Segmentierung · Kampagnen · Quick Wins</span>
+    </div>
+    <div class="hero-meta-item">
+      <span class="hero-meta-label">Zeitraum</span>
+      <span class="hero-meta-value">Erste 30 Tage</span>
+    </div>
+  </div>
+</div>
+
+<!-- TOC -->
+<nav class="toc">
+  <a href="#analyse">01 Analyse</a>
+  <a href="#segmente">02 Segmente</a>
+  <a href="#kampagnen">03 Kampagnen</a>
+  <a href="#quickwins">04 Quick Wins</a>
+</nav>
+
+<!-- SECTION 1: ANALYSE -->
+<section id="analyse">
+  <div class="section-header">
+    <div class="section-num">01</div>
+    <div class="section-titles">
+      <div class="section-tag">Analyse &amp; Priorisierung</div>
+      <h2>Die 3 Größten Probleme</h2>
+    </div>
+  </div>
+
+  <div class="problems-grid">
+    <div class="problem-card">
+      <div class="problem-rank">01</div>
+      <div class="problem-title">Frequenz ohne Logik: 2–3 Mails täglich</div>
+      <p class="problem-desc">Wenn Mails ohne Abstimmung rausgehen, entsteht Verwirrung – intern wie extern. Kunden erhalten widersprüchliche Botschaften, Unsubscribe-Raten steigen, und die Zustellbarkeit (Deliverability) leidet langfristig. Das schadet dem wichtigsten Asset: der Liste selbst.</p>
+      <div class="problem-impact">Kritisch: Deliverability &amp; Listenhygiene</div>
+    </div>
+    <div class="problem-card">
+      <div class="problem-rank">02</div>
+      <div class="problem-title">Keine Segmentierung: Gießkannenprinzip</div>
+      <p class="problem-desc">Jede Person, die je angemeldet hat, bekommt dasselbe. Dabei sind die Bedürfnisse von jemandem, der schon 3x gelaufen ist, grundlegend anders als die eines Newcomers. Ohne Segmentierung verschenkt man Revenue und verbrennt Engagement-Budget.</p>
+      <div class="problem-impact">Hoch: Conversion &amp; Revenue pro Empfänger</div>
+    </div>
+    <div class="problem-card">
+      <div class="problem-rank">03</div>
+      <div class="problem-title">Flows laufen, aber niemand versteht sie</div>
+      <p class="problem-desc">Ein KI-Tool optimiert Flows – aber ohne klare Eigentümerschaft und Datenbasis kann keine KI echte Performance liefern. Solange nicht klar ist, welche Flows existieren, wen sie ansprechen und was sie leisten, optimiert man ins Blaue.</p>
+      <div class="problem-impact">Mittel: Skalierbarkeit &amp; Kontrolle</div>
+    </div>
+  </div>
+
+  <div class="priority-box">
+    <p>
+      Ich würde <strong>zuerst bei Problem #1 ansetzen</strong> – nicht weil es das strategisch interessanteste ist, sondern weil es das fundamentalste ist. Eine beschädigte Deliverability kann man nicht durch gute Kampagnen reparieren. <br><br>
+      Konkret: Einen <strong>Sending Calendar + Frequenzregel</strong> einführen (max. 1 Mail/Tag, Ausnahmen nur bei echten Events), eine <strong>Suppression List</strong> für inaktive Kontakte pflegen und gleichzeitig ein einfaches <strong>Engagement-Scoring</strong> in Klaviyo aufsetzen. Das schützt die Liste und schafft die Basis, auf der Segmentierung und Kampagnen dann wirklich funktionieren.
+    </p>
+  </div>
+</section>
+
+<!-- SECTION 2: SEGMENTE -->
+<section id="segmente">
+  <div class="section-header">
+    <div class="section-num">02</div>
+    <div class="section-titles">
+      <div class="section-tag">Segmentierungsstrategie</div>
+      <h2>Die ersten 5 Segmente</h2>
+    </div>
+  </div>
+
+  <p style="font-size:15px; color:#555; max-width:700px; margin-bottom:32px; line-height:1.7;">
+    Die Logik folgt dem Customer Journey-Prinzip: Wo steht jemand in seiner [Sportevents-Unternehmen]-Reise? Das ist relevanter als demografische Daten und direkt in Klaviyo umsetzbar.
+  </p>
+
+  <div class="segments-grid">
+    <div class="seg-card">
+      <div class="seg-size">Priorität 1 · Größtes Umsatzpotenzial</div>
+      <div class="seg-name">🏆 Die Loyalen – Wiederkehrer</div>
+      <p class="seg-desc">Personen, die bereits 2+ Events gebucht haben. Das sind die wertvollsten Kontakte – sie kennen das Produkt, vertrauen der Marke und haben die höchste Conversion-Wahrscheinlichkeit für neue Veranstaltungen, Merchandise oder Premium-Formate.</p>
+      <div class="seg-criteria">
+        <span class="tag accent">2+ Buchungen</span>
+        <span class="tag">Mind. 1 abgeschlossen</span>
+        <span class="tag">Hoher CLV</span>
+        <span class="tag">Aktiv in letzten 180 Tagen</span>
+      </div>
+    </div>
+
+    <div class="seg-card">
+      <div class="seg-size">Priorität 2</div>
+      <div class="seg-name">🌱 Newcomers – Erstanmeldungen</div>
+      <p class="seg-desc">Kontakte, die sich zum ersten Mal angemeldet haben oder noch kein Event gebucht haben. Brauchen Vertrauen, Inspiration und einen einfachen ersten Schritt. Welcome-Flow und Social Proof stehen im Vordergrund.</p>
+      <div class="seg-criteria">
+        <span class="tag">0 Buchungen</span>
+        <span class="tag accent">Anmeldung &lt; 60 Tage</span>
+        <span class="tag">Niedrige Öffnungsrate</span>
+      </div>
+    </div>
+
+    <div class="seg-card">
+      <div class="seg-size">Priorität 3</div>
+      <div class="seg-name">⏳ Einmalige Starter – Reaktivierung</div>
+      <p class="seg-desc">Haben einmal gebucht oder ein Event begonnen, sind seitdem aber inaktiv. Der klassische "Einmal und nie wieder"-Fall – oft nicht wegen fehlendem Interesse, sondern weil der richtige Trigger fehlte. Gezielte Win-Back-Kommunikation.</p>
+      <div class="seg-criteria">
+        <span class="tag">1 Buchung</span>
+        <span class="tag accent">Kein Engagement &gt; 90 Tage</span>
+        <span class="tag">Datum des letzten Events</span>
+      </div>
+    </div>
+
+    <div class="seg-card">
+      <div class="seg-size">Priorität 4</div>
+      <div class="seg-name">🔥 Heiße Leads – Bald-Starter</div>
+      <p class="seg-desc">Haben sich für ein spezifisches Event angemeldet, das in den nächsten 30 Tagen stattfindet. Brauchen jetzt Vorbereitung, Motivation und Logistik – keine Sales-Mails. Hohe Relevanz = hohe Öffnungsraten.</p>
+      <div class="seg-criteria">
+        <span class="tag accent">Event in &lt; 30 Tagen</span>
+        <span class="tag">Buchung bestätigt</span>
+        <span class="tag">Onboarding-Phase</span>
+      </div>
+    </div>
+
+    <div class="seg-card">
+      <div class="seg-size">Priorität 5</div>
+      <div class="seg-name">😴 Inaktive – Suppression-Kandidaten</div>
+      <p class="seg-desc">Kein Öffnen, kein Klicken seit 6+ Monaten, keine Buchung. Vor dem Löschen eine letzte Re-Engagement-Kampagne, danach konsequente Bereinigung. Schützt die Deliverability der gesamten Liste.</p>
+      <div class="seg-criteria">
+        <span class="tag">0 Öffnungen &gt; 180 Tage</span>
+        <span class="tag accent">Suppression-Kandidat</span>
+        <span class="tag">Listenhygiene</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 3: KAMPAGNEN -->
+<section id="kampagnen">
+  <div class="section-header">
+    <div class="section-num">03</div>
+    <div class="section-titles">
+      <div class="section-tag">Konkrete Kampagnenideen</div>
+      <h2>2 Segmentierte Kampagnen</h2>
+    </div>
+  </div>
+
+  <div class="campaigns-stack">
+
+    <!-- Kampagne 1 -->
+    <div class="campaign-card">
+      <div class="campaign-header">
+        <span class="campaign-num">Kampagne 01</span>
+        <span class="campaign-name">„Dein nächstes Event wartet"</span>
+        <span class="campaign-badge">Upsell · Loyale</span>
+      </div>
+      <div class="campaign-body">
+        <div class="campaign-field">
+          <label>Zielgruppe</label>
+          <p>Segment „Die Loyalen" – Personen mit 2+ Events, die ihr letztes Erlebnis vor 3–9 Monaten hatten. Klaviyo-Filter: Purchased &gt;= 2, Last Event Date zwischen 90–270 Tagen.</p>
+        </div>
+        <div class="campaign-field">
+          <label>Ziel</label>
+          <p>Wiederbuchung + Cross-Sell auf neue Strecken oder Distanzen. KPI: Conversion Rate &gt; 8% (Benchmark bei bestehenden Kunden realistisch), Revenue per Email.</p>
+        </div>
+        <div class="campaign-field full">
+          <label>Message / Angle</label>
+          <p>Personal und stolz. Nicht "Hier gibt es was zu kaufen", sondern: <strong>„Du weißt, was es bedeutet, einen [Sportevents-Unternehmen] zu finishen. Jetzt gibt es eine neue Strecke – und sie hat deinen Namen schon drauf."</strong> Das Mailing greift die persönliche Leistung auf (wenn möglich mit Event-Namen / Datum personalisiert) und leitet daraus eine emotionale Brücke zum nächsten Erlebnis. Variante A: Neues Format/Distanz. Variante B: Andere Region/Stadt.</p>
+        </div>
+        <div class="campaign-reason">
+          <strong>Warum diese Kampagne Sinn macht:</strong> Bestehende Kunden zu reaktivieren kostet 5–7x weniger als Neukunden. Diese Gruppe hat bereits das höchste Vertrauen in die Marke und die niedrigste Hürde zur Wiederbuchung. Ein personalisierter, stolz-machender Angle funktioniert hier deutlich besser als ein generischer Promo-Blast.
+        </div>
+      </div>
+    </div>
+
+    <!-- Kampagne 2 -->
+    <div class="campaign-card">
+      <div class="campaign-header">
+        <span class="campaign-num">Kampagne 02</span>
+        <span class="campaign-name">„Nur schauen kostet nix – aber irgendwann tust du es"</span>
+        <span class="campaign-badge">Nurture · Newcomers</span>
+      </div>
+      <div class="campaign-body">
+        <div class="campaign-field">
+          <label>Zielgruppe</label>
+          <p>Segment „Newcomers" – angemeldet, aber keine Buchung. Anmeldung vor 14–45 Tagen. Diese Gruppe ist noch warm, aber der erste Enthusiasmus lässt nach, wenn nichts passiert.</p>
+        </div>
+        <div class="campaign-field">
+          <label>Ziel</label>
+          <p>Erste Buchung triggern. KPI: Click-to-Booking-Rate, Assisted Revenue. Sekundär: Marken-Affinity aufbauen und Unsubscribes verhindern.</p>
+        </div>
+        <div class="campaign-field full">
+          <label>Message / Angle</label>
+          <p>Ehrlich, nahbar, keine Angst schüren. Drei-Mail-Sequenz (kein Blast, sondern Flow-Logik): <strong>Mail 1:</strong> „Was ist eigentlich ein [Sportevents-Unternehmen]?" – authentische Story, Teilnehmer-Fotos, kurzes Format-Erklärvideo. <strong>Mail 2:</strong> „So haben sich andere vorbereitet (die auch keine Ahnung hatten)" – Social Proof durch Community-Stimmen, Anfänger-Geschichten. <strong>Mail 3:</strong> Konkreter CTA mit nächstgelegenen Events + Einsteiger-Option, klare Zeitinformation, FAQ-Teaser.</p>
+        </div>
+        <div class="campaign-reason">
+          <strong>Warum diese Kampagne Sinn macht:</strong> Das Produkt ist erklärungsbedürftig und setzt ein gewisses Commitment voraus. Newcomers haben sich angemeldet, weil sie neugierig sind – nicht weil sie schon bereit sind. Ein Nurture-Ansatz, der Barrieren abbaut statt nur zu promoten, erzeugt bessere Erstbuchungsraten und langfristig loyalere Kunden als ein einmaliger Discount-Push.
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- SECTION 4: QUICK WINS -->
+<section id="quickwins">
+  <div class="section-header">
+    <div class="section-num">04</div>
+    <div class="section-titles">
+      <div class="section-tag">Erste 30 Tage</div>
+      <h2>Quick Wins &amp; Prioritäten</h2>
+    </div>
+  </div>
+
+  <div class="timeline">
+
+    <div class="timeline-week">
+      <div class="timeline-week-label">Woche 1 – Haus in Ordnung bringen</div>
+      <div class="timeline-items">
+        <div class="timeline-item">
+          <span class="timeline-item-icon">🗓️</span>
+          <div>
+            <b>Sending Calendar einführen</b>
+            <span>Keine Mail ohne Eintrag. Max. 1/Tag Regel. Exceptions nur mit Begründung. Template in Notion/Sheets.</span>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-item-icon">🔍</span>
+          <div>
+            <b>Flow-Audit</b>
+            <span>Alle laufenden Flows dokumentieren: Welcher Flow, wen, wann, mit welchem Ziel? Überschneidungen identifizieren.</span>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-item-icon">📊</span>
+          <div>
+            <b>Baseline-KPIs setzen</b>
+            <span>Open Rate, Click Rate, Unsubscribe Rate, Revenue per Email. Aktuellen Stand festhalten – Benchmark für alle Maßnahmen.</span>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-item-icon">🧹</span>
+          <div>
+            <b>Suppression List aufsetzen</b>
+            <span>Kontakte ohne Engagement &gt; 180 Tage identifizieren. Noch nicht löschen – aber aus aktiven Kampagnen rausnehmen.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="timeline-week">
+      <div class="timeline-week-label">Woche 2 – Erste Segmente bauen</div>
+      <div class="timeline-items">
+        <div class="timeline-item">
+          <span class="timeline-item-icon">🏗️</span>
+          <div>
+            <b>Top-3 Segmente in Klaviyo anlegen</b>
+            <span>Loyale, Newcomers, Heiße Leads. Mit Klaviyo-nativer Logik (Purchase behavior, Date filters, Engagement).</span>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-item-icon">✉️</span>
+          <div>
+            <b>Welcome Flow überarbeiten</b>
+            <span>Ersten Eindruck für Newcomers verbessern. Mindestens: Personalisierter Betreff, klare nächste Schritt-CTA, Mobile-optimiert.</span>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-item-icon">🤝</span>
+          <div>
+            <b>Stakeholder-Alignment</b>
+            <span>Mit allen Teams, die Mails verschicken, Frequenzregel und Abstimmungsprozess vereinbaren. Kein Alleingang mehr.</span>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-item-icon">🔬</span>
+          <div>
+            <b>Erste Subject-Line-Tests</b>
+            <span>A/B-Test auf bestehende Kampagne: Curiosity vs. Direktnutzen. Einfachste Maßnahme mit schnellem Feedback.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="timeline-week">
+      <div class="timeline-week-label">Woche 3–4 – Erste segmentierte Kampagnen</div>
+      <div class="timeline-items">
+        <div class="timeline-item">
+          <span class="timeline-item-icon">🚀</span>
+          <div>
+            <b>Kampagne „Loyale" launchen</b>
+            <span>Upsell-Kampagne für Wiederkehrer. Personalisierter Angle mit letztem Event. Klarer Messzeitraum: 7 Tage nach Versand.</span>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-item-icon">🌱</span>
+          <div>
+            <b>Newcomer-Nurture-Flow starten</b>
+            <span>3-Mail-Sequenz für neue Leads ohne Buchung. Storytelling-First, Conversion-Second.</span>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-item-icon">📈</span>
+          <div>
+            <b>Weekly Reporting-Routine</b>
+            <span>Jede Woche: Öffnungsraten, Klicks, Revenue per Segment, Unsubscribes. Sichtbar machen, was die Maßnahmen bringen.</span>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-item-icon">🛡️</span>
+          <div>
+            <b>Re-Engagement für Inaktive</b>
+            <span>„Letzter Versuch"-Mail für &gt;180-Tage-Inaktive. Danach konsequente Bereinigung. Schützt Sender-Reputation.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="kpi-grid">
+    <div class="kpi-card">
+      <div class="kpi-value">+15%</div>
+      <div class="kpi-label">Erwartete Open Rate<br>durch Segmentierung</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-value">−40%</div>
+      <div class="kpi-label">Unsubscribes durch<br>Frequenzoptimierung</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-value">30T</div>
+      <div class="kpi-label">Bis zur ersten<br>segmentierten Kampagne</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-value">5 Seg</div>
+      <div class="kpi-label">Aufgebaute Segmente<br>in Klaviyo</div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <span>[Sportevents-Unternehmen] · E-Mail Marketing Case Study</span>
+  <span>Analyse · Segmentierung · Kampagnen · Quick Wins</span>
+</footer>
+
+</body>
+</html>
